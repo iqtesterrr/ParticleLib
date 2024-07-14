@@ -33,6 +33,7 @@ public class Cone extends ParticleObject implements Playable {
      * @param origin 圆锥底面圆的原点
      * @param sample 样本点个数(粒子的数量)
      * @param radius 球的半径
+     * @param height 高度
      */
     public Cone(Location origin, int sample, double radius, double height) {
         setOrigin(origin);
