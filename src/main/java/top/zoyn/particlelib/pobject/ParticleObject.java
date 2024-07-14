@@ -28,7 +28,8 @@ public abstract class ParticleObject {
     private long period;
     private boolean running = false;
 
-    private Particle particle = Particle.VILLAGER_HAPPY;
+    private Particle particle;
+    private Particle redstone;
     private int count = 1;
     private double offsetX = 0;
     private double offsetY = 0;
@@ -47,6 +48,22 @@ public abstract class ParticleObject {
      * 表示该特效对象所拥有的矩阵
      */
     private Matrix matrix;
+
+    public ParticleObject() {
+        try {
+            String version = Bukkit.getVersion();
+            int numberVersion = Integer.parseInt(version.replace(".", ""));
+            if (numberVersion > 1205) {
+                particle = (Particle) Class.forName("org.bukkit.Particle").getField("HAPPY_VILLAGER").get(null);
+                redstone = (Particle) Class.forName("org.bukkit.Particle").getField("DUST").get(null);
+            } else {
+                particle = (Particle) Class.forName("org.bukkit.Particle").getField("VILLAGER_HAPPY").get(null);
+                redstone = (Particle) Class.forName("org.bukkit.Particle").getField("REDSTONE").get(null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 将计算好的粒子展示位置以列表的方式返回
@@ -597,13 +614,13 @@ public abstract class ParticleObject {
         if (color != null) {
             if (VersionUtils.isNewer()) {
                 Particle.DustOptions dust = new Particle.DustOptions(color, 1);
-                location.getWorld().spawnParticle(Particle.REDSTONE, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, offsetX, offsetY, offsetZ, 1, dust);
+                location.getWorld().spawnParticle(redstone, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, offsetX, offsetY, offsetZ, 1, dust);
             } else {
                 // 对低版本的黑色做一个小小的兼容
                 if (color.getRed() == 0 && color.getBlue() == 0 && color.getGreen() == 0) {
-                    location.getWorld().spawnParticle(Particle.REDSTONE, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, 1);
+                    location.getWorld().spawnParticle(redstone, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, 1);
                 } else {
-                    location.getWorld().spawnParticle(Particle.REDSTONE, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, color.getRed() / 255.0f, color.getGreen() / 255.0f, color.getBlue() / 255.0f, 1);
+                    location.getWorld().spawnParticle(redstone, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, color.getRed() / 255.0f, color.getGreen() / 255.0f, color.getBlue() / 255.0f, 1);
                 }
             }
             return;
@@ -625,13 +642,13 @@ public abstract class ParticleObject {
 
         if (VersionUtils.isNewer()) {
             Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(r, g, b), 1);
-            location.getWorld().spawnParticle(Particle.REDSTONE, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, r, g, b, 1, dust);
+            location.getWorld().spawnParticle(redstone, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, r, g, b, 1, dust);
         } else {
             // 对低版本的黑色做一个小小的兼容
             if (color.getRed() == 0 && color.getBlue() == 0 && color.getGreen() == 0) {
-                location.getWorld().spawnParticle(Particle.REDSTONE, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, 1);
+                location.getWorld().spawnParticle(redstone, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, Float.MIN_VALUE / 255.0f, 1);
             } else {
-                location.getWorld().spawnParticle(Particle.REDSTONE, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, r / 255.0f, g / 255.0f, b / 255.0f, 1);
+                location.getWorld().spawnParticle(redstone, showLocation.getX(), showLocation.getY(), showLocation.getZ(), 0, r / 255.0f, g / 255.0f, b / 255.0f, 1);
             }
         }
     }

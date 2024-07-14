@@ -17,7 +17,7 @@ dependencies {
 }
 
 group = "top.zoyn.particlelib"
-version = "1.5.1"
+version = "1.5.2"
 description = "ParticleLib"
 
 java {
