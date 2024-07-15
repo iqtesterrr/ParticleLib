@@ -50,18 +50,14 @@ public abstract class ParticleObject {
     private Matrix matrix;
 
     public ParticleObject() {
-        try {
-            String[] version = Bukkit.getBukkitVersion().split("-");
-            double numberVersion = Double.parseDouble(version[0].replaceFirst(".", ""));
-            if (numberVersion > 120.5) {
-                particle = (Particle) Class.forName("org.bukkit.Particle").getField("HAPPY_VILLAGER").get(null);
-                redstone = (Particle) Class.forName("org.bukkit.Particle").getField("DUST").get(null);
-            } else {
-                particle = (Particle) Class.forName("org.bukkit.Particle").getField("VILLAGER_HAPPY").get(null);
-                redstone = (Particle) Class.forName("org.bukkit.Particle").getField("REDSTONE").get(null);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        String[] version = Bukkit.getBukkitVersion().split("-");
+        double numberVersion = Double.parseDouble(version[0].replaceFirst("\\.", ""));
+        if (numberVersion > 120.5) {
+            particle = Particle.valueOf("HAPPY_VILLAGER");
+            redstone = Particle.valueOf("DUST");
+        } else {
+            particle = Particle.valueOf("VILLAGER_HAPPY");
+            redstone = Particle.valueOf("REDSTONE");
         }
     }
 
