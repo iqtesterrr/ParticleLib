@@ -1,10 +1,10 @@
 -classpath 'C:\\Java\\ParticleLib\\build\\classes\\java\\main;C:\\Java\\ParticleLib\\build\\resources\\main;C:\\Users\\dumo6\\.gradle\\caches\\modules-2\\files-2.1\\org.spigotmc\\spigot-api\\1.15.2-R0.1-SNAPSHOT\\ab007661369728522e2946a2cb87bc101e846ded\\spigot-api-1.15.2-R0.1-SNAPSHOT.jar;C:\\Users\\dumo6\\.m2\\repository\\commons-lang\\commons-lang\\2.6\\commons-lang-2.6.jar;C:\\Users\\dumo6\\.gradle\\caches\\modules-2\\files-2.1\\net.md-5\\bungeecord-chat\\1.15-SNAPSHOT\\1f2e7af20162b28649e112bcf9e2eaf47c228b7e\\bungeecord-chat-1.15-SNAPSHOT.jar;C:\\Users\\dumo6\\.m2\\repository\\com\\google\\guava\\guava\\21.0\\guava-21.0.jar;C:\\Users\\dumo6\\.m2\\repository\\com\\google\\code\\gson\\gson\\2.8.0\\gson-2.8.0.jar;C:\\Users\\dumo6\\.gradle\\caches\\modules-2\\files-2.1\\org.yaml\\snakeyaml\\1.25\\8b6e01ef661d8378ae6dd7b511a7f2a33fae1421\\snakeyaml-1.25.jar'
 -d 'C:\\Java\\ParticleLib\\build\\docs\\javadoc'
--doctitle 'ParticleLib 1.5.2 API'
+-doctitle 'ParticleLib 1.5.3 API'
 -encoding 'UTF-8'
 -notimestamp 
 -quiet 
--windowtitle 'ParticleLib 1.5.2 API'
+-windowtitle 'ParticleLib 1.5.3 API'
 'C:\\Java\\ParticleLib\\src\\main\\java\\top\\zoyn\\particlelib\\ParticleLib.java'
 'C:\\Java\\ParticleLib\\src\\main\\java\\top\\zoyn\\particlelib\\pobject\\Arc.java'
 'C:\\Java\\ParticleLib\\src\\main\\java\\top\\zoyn\\particlelib\\pobject\\Astroid.java'
