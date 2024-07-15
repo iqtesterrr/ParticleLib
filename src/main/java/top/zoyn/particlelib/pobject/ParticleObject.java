@@ -51,9 +51,9 @@ public abstract class ParticleObject {
 
     public ParticleObject() {
         try {
-            String version = Bukkit.getVersion();
-            int numberVersion = Integer.parseInt(version.replace(".", ""));
-            if (numberVersion > 1205) {
+            String[] version = Bukkit.getBukkitVersion().split("-");
+            double numberVersion = Double.parseDouble(version[0].replaceFirst(".", ""));
+            if (numberVersion > 120.5) {
                 particle = (Particle) Class.forName("org.bukkit.Particle").getField("HAPPY_VILLAGER").get(null);
                 redstone = (Particle) Class.forName("org.bukkit.Particle").getField("DUST").get(null);
             } else {
